@@ -11,6 +11,8 @@ jobs:
 
       - name: Get pods info
         id: pods_info_step
+        env:
+          KUBECONFIG: /home/github_runner/.kube/config
         run: |
           has_failed=$(kubectl get pods -A -o custom-columns='STATUS:.status.phase' | grep -Eq "Failed|CrashLoopBackOff|Unknown" && echo 1 || echo 0)
           echo "has_failed=$has_failed" >> "$GITHUB_OUTPUT"
