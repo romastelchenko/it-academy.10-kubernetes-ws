@@ -1,0 +1,10 @@
+name: "_10-kubernetes-ws-homework-1-check-pods-status"
+
+on: workflow_dispatch
+
+jobs:
+  _10-kubernetes-ws-homework-1-check-pods-status:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print info
+        run: echo "Run _10-kubernetes-ws-homework-1-check-pods-status"
