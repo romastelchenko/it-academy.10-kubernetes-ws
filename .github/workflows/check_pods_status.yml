@@ -24,4 +24,4 @@ jobs:
           message_body_pattern='{"text":"%s\nCurrent pods info: ```%s```"}'
           pods_status="$( [[ ${has_failed} = 1 ]] && echo ":red_circle: ATTENTION! Crushed pods were detected" || echo ":large_green_circle: No crushed pods were detected")"
           message_body=$(printf "${message_body_pattern}" "${pods_status}" "${pods_info}")
-          curl -X POST -H 'Content-type: application/json' --data "${message_body}" ${SECRET_SLACK_WEBHOOK_URL}
+          curl -X POST -H 'Content-type: application/json' --data "${message_body}" ${{ secrets.SECRET_SLACK_WEBHOOK_URL }}
