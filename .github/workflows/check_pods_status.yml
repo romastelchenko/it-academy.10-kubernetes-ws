@@ -15,8 +15,13 @@ jobs:
           KUBECONFIG: /home/github_runner/.kube/config
         run: |
           has_failed=$(kubectl get pods -A -o custom-columns='STATUS:.status.phase' | grep -Eq "Failed|CrashLoopBackOff|Unknown" && echo 1 || echo 0)
-          echo "has_failed=$has_failed" >> "$GITHUB_OUTPUT"
-          echo "pods_info=$(kubectl get pods -A)" >> "$GITHUB_OUTPUT"
+          pods_info=$(kubectl get pods -A)
+          {
+            echo "has_failed=$has_failed"
+            echo "pods_info<<EOF"
+            echo "$pods_info"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
 
       - name: Send slack notification
         run: |
