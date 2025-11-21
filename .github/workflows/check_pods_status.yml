@@ -4,7 +4,7 @@ on: workflow_dispatch
 
 jobs:
   _10-kubernetes-ws-homework-1-check-pods-status:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Print info
         run: echo "Run _10-kubernetes-ws-homework-1-check-pods-status"
